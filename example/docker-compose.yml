@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  rabbitmq:
+    image: rabbitmq:3
+    container_name: rabbit
+    restart: always
+    environment:
+      - RABBITMQ_DEFAULT_USER=jef
+      - RABBITMQ_DEFAULT_PASS=rabbitpw
+    ports:
+      - "5672:5672"
+
+  mongodb:
+    image: mongo
+    container_name: mongo
+    restart: always
+    environment:
+      - MONGO_INITDB_ROOT_USERNAME=$MONGODB_USERNAME
+      - MONGO_INITDB_ROOT_PASSWORD=$MONGODB_PASSWORD
+    ports:
+      - "27017:27017"
+
+  machinery-worker:
+
